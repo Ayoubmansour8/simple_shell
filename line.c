@@ -15,6 +15,7 @@ char **split_line(char *line)
 	char *DELIM = " \t\r\n\a";
 	char *arg;
 	int i = 0;
+	int j;
 	char **args = malloc((MAX_ARGS + 1) * sizeof(char *));
 
 	if (args == NULL)
@@ -22,14 +23,15 @@ char **split_line(char *line)
 		perror("malloc failed");
 		exit(EXIT_FAILURE);
 	}
-
-	for (arg = strtok(line, DELIM); arg != NULL && i < MAX_ARGS; arg = strtok(NULL, DELIM))
+	for (arg = strtok(line, DELIM);
+	arg != NULL && i < MAX_ARGS;
+	arg = strtok(NULL, DELIM))
 	{
 		args[i] = malloc((MAX_ARG_LENGTH + 1) * sizeof(char));
 		if (args[i] == NULL)
 		{
 			perror("malloc failed");
-			for (int j = 0; j < i; j++)
+			for (j = 0; j < i; j++)
 			{
 				free(args[j]);
 			}
@@ -43,7 +45,6 @@ char **split_line(char *line)
 	args[i] = NULL;
 	return (args);
 }
-
 /**
  * handle_semicolon - Handles the semicolon operator in a line of code.
  * @line: The input line to process.
@@ -57,12 +58,12 @@ int handle_semicolon(char *line)
 
 	for (i = 0; commands[i] != NULL; i++)
 	{
-		int status = execute((char **)commands[i]);
+	int status = execute((char **)commands[i]);
 
-		if (status != 0)
-		{
-			return (status);
-		}
+	if (status != 0)
+	{
+	return (status);
+	}
 	}
 
 	free_args(commands);

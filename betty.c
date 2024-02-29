@@ -1,9 +1,6 @@
 #include "main.h"
-
 /**
- * custom_hello - Prints a custom hello message
- *
- * This function prints "Hello, world!" to the standard output.
+ * custom_hello - Entry point of the program
  *
  * Return: Always 0 (Success)
  */

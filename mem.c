@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * parse_command - Parse the command string into tokens
- * @command: Command string to parse
+ * parse_command - parse the command string into tokens
+ * @command: command string to parse
  *
- * Return: Array of pointers to the token
+ * Return: array of pointers to the token
  */
 char **parse_command(char *command)
 {
@@ -22,17 +22,17 @@ char **parse_command(char *command)
 
 	while (token != NULL)
 	{
-		tokens[i++] = token;
+		tokens[i] = token;
+		i++;
 		token = strtok(NULL, DELIMITER);
 	}
 
 	tokens[i] = NULL;
 	return (tokens);
 }
-
 /**
- * free_tokens - Frees the memory allocated for the tokens array
- * @tokens: Array of pointers to the tokens
+ * free_tokens - frees the memory allocated for the tokens array
+ * @tokens: array of pointers to the tokens
  */
 void free_tokens(char **tokens)
 {

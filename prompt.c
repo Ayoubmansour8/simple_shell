@@ -2,7 +2,6 @@
 
 /**
  * print_prompt - Prints a prompt to the stdout stream
- *
  * Return: void
  */
 void print_prompt(void)
@@ -12,15 +11,12 @@ void print_prompt(void)
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, prompt, _strlen(prompt));
 }
-
 /**
  * prompt - Reads a line of input from the user.
- *
  * @line: Pointer to the variable where the input line will be stored.
- *
  * Return: 1 if a line of input was successfully read.
- *         0 if the input line is empty or end of input is reached.
- *        -1 if an error occurred while reading input.
+ *	0 if the input line is empty or end of input is reached.
+ *	-1 if an error occurred while reading input.
  */
 int prompt(char **line)
 {
@@ -43,8 +39,9 @@ int prompt(char **line)
 	else
 	{
 		if (newLine[bytesRead - 1] == '\n')
+		{
 			newLine[bytesRead - 1] = '\0';
-
+		}
 		free(*line);
 		*line = newLine;
 		return (1);

@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _putchar - writes the character c to stdout
  * @c: character to print
@@ -27,7 +26,6 @@ size_t _strlen(const char *s)
 
 	return (len);
 }
-
 /**
  * free_args - Free the memory allocated for an array of strings
  * @args: Array of strings to free
@@ -45,7 +43,6 @@ void free_args(char **args)
 	}
 	free(args);
 }
-
 /**
  * _strncpy - copies a string
  * @dest: destination buffer
@@ -66,7 +63,6 @@ char *_strncpy(char *dest, const char *src, size_t n)
 
 	return (dest);
 }
-
 /**
  * _strcpy - copies a string
  * @destination: string destination
@@ -82,7 +78,7 @@ char *_strcpy(char *destination, const char *source)
 	{
 		*ptr++ = *source++;
 	}
-	*ptr = '\0';
+	ptr = '\0';
 
 	return (destination);
 }

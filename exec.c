@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * execute - Execute a command with arguments
  *
@@ -10,13 +9,21 @@
 int execute(char **args)
 {
 	if (args[0] == NULL)
+	{
 		return (1);
+	}
 	else if (_strcmp(args[0], "exit") == 0)
+	{
 		return (execute_exit(args));
+	}
 	else if (_strcmp(args[0], "env") == 0)
+	{
 		return (execute_env());
+	}
 	else
+	{
 		return (execute_command(args));
+	}
 }
 
 /**
@@ -31,10 +38,13 @@ int execute_exit(char **args)
 	if (args[1] != NULL)
 	{
 		int status = _atoi(args[1]);
+
 		exit(status);
 	}
 	else
+	{
 		exit(EXIT_SUCCESS);
+	}
 }
 
 /**
@@ -48,8 +58,9 @@ int execute_env(void)
 
 	while (*env != NULL)
 	{
-		_fputs(*env++, stdout);
+		_fputs(*env, stdout);
 		_fputc('\n', stdout);
+		env++;
 	}
 	return (1);
 }
@@ -75,26 +86,26 @@ int execute_command(char **args)
 			if (execve(command_path, args, environ) == -1)
 			{
 				perror("execve");
-				exit(EXIT_FAILURE);
+				exit(-1);
 			}
 		}
 		else if (child_pid < 0)
 		{
 			perror("fork");
-			exit(EXIT_FAILURE);
+			exit(-1);
 		}
 		else
 		{
-			wait(&status);
-			free(command_path);
-			if (WIFEXITED(status))
-				status = WEXITSTATUS(status);
-			if (!isatty(STDIN_FILENO))
-				return (status);
+		wait(&status);
+		free(command_path);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
+		if (!isatty(STDIN_FILENO))
+			return (status);
 		}
-	}
-	else
-	{
+		}
+		else
+		{
 		_fputs(program_name, stdout);
 		_fputs(": 1: ", stdout);
 		_fputs(args[0], stdout);
@@ -102,4 +113,5 @@ int execute_command(char **args)
 		_fputc('\n', stdout);
 	}
 	return (0);
-}	
+}
+

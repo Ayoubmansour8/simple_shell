@@ -1,6 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define BUFFER_SIZE 1024
+#define MAX_COMMAND_LEN 1024
+#define MAX_TOKENS 64
+#define DELIMITER " \t\n"
+
 #include <fcntl.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -15,11 +20,6 @@
 #include <limits.h>
 #include <ctype.h>
 #include <stdarg.h>
-
-#define BUFFER_SIZE 1024
-#define MAX_COMMAND_LEN 1024
-#define MAX_TOKENS 64
-#define DELIMITER " \t\n"
 
 extern char **environ;
 
@@ -67,6 +67,4 @@ int _fputc(int c, FILE *stream);
 char *_strcat(char *dest, const char *src);
 int _fputc(int c, FILE *stream);
 void *myrealloc(void *ptr, size_t size);
-
 #endif /* MAIN_H */
-

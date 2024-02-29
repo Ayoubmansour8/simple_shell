@@ -1,8 +1,6 @@
 #include "main.h"
-
 #define MAX_COMMAND_LENGTH 100
 #define MAX_PATH_LENGTH 200
-
 /**
  * get_command_path - Get the full path of a command using the PATH variable
  * @command: Command to find
@@ -13,16 +11,18 @@ char *get_command_path(char *command)
 	char *path, *dir, *full_path, *token;
 
 	if (_strchr(command, '/') != NULL)
+	{
 		return (_strdup(command));
-
+	}
 	path = _getenv("PATH");
+
 	if (path == NULL)
 	{
 		write(STDERR_FILENO, "Error retrieving PATH variable\n", 31);
 		return (NULL);
 	}
-
 	token = strtok(path, ":");
+
 	while (token != NULL)
 	{
 		dir = _strdup(token);
@@ -48,7 +48,6 @@ char *get_command_path(char *command)
 	}
 	return (NULL);
 }
-
 /**
  * build_command_path - Build the full path of a command
  * @directory: Directory to prepend to the command
@@ -67,11 +66,10 @@ char *build_command_path(char *directory, char *command)
 		write(STDERR_FILENO, "Allocation error\n", 17);
 		exit(EXIT_FAILURE);
 	}
-
 	_strncpy(path, directory, directory_len);
+
 	path[directory_len] = '/';
 	_strncpy(path + directory_len + 1, command, command_len);
 	path[path_len - 1] = '\0';
-
 	return (path);
 }

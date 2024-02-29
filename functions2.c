@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * _strchr - Locate character in string
- * @str: String to be searched
- * @c: Character to be located
+ * _strchr - locate character string
+ * @str: string to be searched
+ * @c: character to be located
  *
- * Return: Pointer to the first occurrence of character in str,
- *         otherwise NULL if not found
+ * Return: pointer to first occurence of character in str
+ * otherwise NULL if not found
  */
 char *_strchr(const char *str, int c)
 {
@@ -18,12 +18,11 @@ char *_strchr(const char *str, int c)
 	}
 	return (NULL);
 }
-
 /**
- * _strdup - Duplicate a string
- * @str: Source string to be duplicated
+ * _strdup - duplicate a string
+ * @str: source string to be duplicated
  *
- * Return: Pointer to the newly allocated string, otherwise NULL
+ * Return: pointer to newly allocated string, otherwise NULL
  */
 char *_strdup(const char *str)
 {
@@ -41,29 +40,27 @@ char *_strdup(const char *str)
 	_strcpy(duplicate, str);
 	return (duplicate);
 }
-
 /**
- * _strcmp - Compare two strings
- * @str1: First string
- * @str2: Second string
- *
- * Return: Integer value representing the comparison result
+ * _strcmp - compares two strings
+ * @str1: char type
+ * @str2: char type
+ * Return: integer value
  */
 int _strcmp(const char *str1, const char *str2)
 {
 	while (*str1 && (*str1 == *str2))
 	{
-		str1++;
-		str2++;
+	str1++;
+	str2++;
 	}
 	return (*(unsigned char *)str1 - *(unsigned char *)str2);
 }
 
 /**
- * _atoi - Convert a string to an integer
- * @str: String to convert
+ * _atoi - converts a string to an integer
+ * @str: string to convert
  *
- * Return: Resulting integer
+ * Return: result
  */
 int _atoi(const char *str)
 {
@@ -87,14 +84,13 @@ int _atoi(const char *str)
 	}
 	return (sign * result);
 }
-
 /**
- * _strncmp - Compare at most n characters of two strings
- * @s1: First string
- * @s2: Second string
- * @n: Max number of characters to compare
+ * _strncmp - compare at most n characters of two strings
+ * @s1: first string
+ * @s2: second string
+ * @n: max number of chars to compare
  *
- * Return: Integer representing the comparison result
+ * Return: integer...
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
